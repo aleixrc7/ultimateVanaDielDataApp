@@ -3,3 +3,13 @@
     align-items: center;
     justify-content: center;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/mothercrystal.jpg'); /* Adjust the path based on your image location */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set the height to cover the entire viewport */
+  }
