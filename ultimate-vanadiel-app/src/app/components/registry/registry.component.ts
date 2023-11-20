@@ -8,23 +8,25 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 })
 export class RegistryComponent {
 
+  inputTouched = false; // Track the focus state
+
   constructor(private formBuilder: FormBuilder) { }
 
   registerForm: FormGroup = this.formBuilder.group({
-    fullName: [, { validators: [Validators.required], updateOn: "change" }],
-    email: [
-      , {
-        validators: [Validators.required, Validators.email]
-        , updateOn: "change",
-      }],
-    password: [, { validators: [Validators.required], updateOn: "change" }],
-    phone: [, { updateOn: "change" }],
-    role: ['jobSeeker', { validators: [Validators.required], updateOn: 'change' }]
+    userName: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    passwordConfirm: ['', [Validators.required, Validators.minLength(6)]]
   });
 
   public submitForm(): void {
 
   }
 
-  // TODO https://medium.com/angular-in-depth/angular-forms-reactive-form-including-angular-material-and-custom-validator-9ef324cc3b08
+  // Set the input as touched when it's focused
+  public setTouched() {
+    this.inputTouched = true;
+  }
+
+  //TODO mirar https://stackoverflow.com/questions/54349574/angular-material-mat-error-shows-only-when-from-control-was-touched
 }

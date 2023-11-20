@@ -9,24 +9,24 @@
                     <mat-form-field class="form-field-width">
                         <div class="mb-3">
                             <mat-label class="form-label">Username:</mat-label>
-                            <!-- <label for="username" class="form-label">Username:</label> -->
-                            <input type="text" id="username" name="username" class="form-control" required>
+                            <input type="text" id="username" name="username" class="form-control" formControlName="userName" (focus)="setTouched()">
+                            <mat-error *ngIf="inputTouched && registerForm.get('userName')?.hasError('required')">a User name must be especificated</mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">Password:</mat-label>
-                            <!-- <label for="password" class="form-label">Password:</label> -->
-                            <input type="password" id="password" name="password" class="form-control" required>
+                            <input type="password" id="password" name="password" class="form-control" formControlName="password" (focus)="setTouched()">
+                            <mat-error *ngIf="inputTouched && registerForm.get('password')?.hasError('required')">Password is required</mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">Confirm Password:</mat-label>
-                            <!-- <label for="confirmPassword" class="form-label">Confirm Password:</label> -->
-                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
-                                required>
+                            <input type="password" id="confirmPassword" name="confirmPassword" formControlName="passwordConfirm" class="form-control" (focus)="setTouched()">
+                            <mat-error *ngIf="inputTouched && registerForm.get('passwordConfirm')?.hasError('required')">Validate password is required</mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">email:</mat-label>
-                            <!-- <label for="email" class="form-label">email:</label> -->
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" formControlName="email" (focus)="setTouched()">
+                            <mat-error *ngIf="inputTouched &&  registerForm.get('email')?.hasError('required')">Email is required</mat-error>
+                            <mat-error *ngIf="inputTouched &&  registerForm.get('email')?.hasError('email')">Enter a valid email address</mat-error>
                         </div>
                     </mat-form-field>
                     <div class="form-check">
@@ -36,7 +36,7 @@
                         </label>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary w-100">Register</button>
                     </div>
                 </form>
             </div>
