@@ -6,29 +6,45 @@
             </div>
             <div class="card-body">
                 <form [formGroup]="registerForm" (submit)="submitForm()">
-                    <mat-form-field class="form-field-width">
                         <div class="mb-3">
                             <mat-label class="form-label">Username:</mat-label>
-                            <input type="text" id="username" name="username" class="form-control" formControlName="userName" (focus)="setTouched()">
-                            <mat-error *ngIf="inputTouched && registerForm.get('userName')?.hasError('required')">a User name must be especificated</mat-error>
+                            <input type="text" id="username" name="username" class="form-control"
+                                formControlName="userName" required>
+                            <mat-error
+                                *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid">
+                                <span *ngIf="registerForm.get('userName')?.hasError('required')">This field is
+                                    mandatory.</span>
+                            </mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">Password:</mat-label>
-                            <input type="password" id="password" name="password" class="form-control" formControlName="password" (focus)="setTouched()">
-                            <mat-error *ngIf="inputTouched && registerForm.get('password')?.hasError('required')">Password is required</mat-error>
+                            <input type="password"  id="password" name="password" class="form-control"
+                                formControlName="password" required>
+                            <mat-error
+                                *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                                <span *ngIf="registerForm.get('password')?.hasError('required')">This field is
+                                    mandatory.</span>
+                            </mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">Confirm Password:</mat-label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" formControlName="passwordConfirm" class="form-control" (focus)="setTouched()">
-                            <mat-error *ngIf="inputTouched && registerForm.get('passwordConfirm')?.hasError('required')">Validate password is required</mat-error>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                formControlName="confirmPassword" class="form-control" required>
+                            <mat-error
+                                *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+                                <span *ngIf="registerForm.get('confirmPassword')?.hasError('required')">This field is
+                                    mandatory.</span>
+                            </mat-error>
                         </div>
                         <div class="mb-3">
                             <mat-label class="form-label">email:</mat-label>
-                            <input type="email" id="email" name="email" class="form-control" formControlName="email" (focus)="setTouched()">
-                            <mat-error *ngIf="inputTouched &&  registerForm.get('email')?.hasError('required')">Email is required</mat-error>
-                            <mat-error *ngIf="inputTouched &&  registerForm.get('email')?.hasError('email')">Enter a valid email address</mat-error>
+                            <input type="email" id="email" name="email" class="form-control" formControlName="email"
+                                required>
+                            <mat-error *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+                                <span *ngIf="registerForm.get('email')?.hasError('required')">This field is
+                                    mandatory.</span>
+                            </mat-error>
                         </div>
-                    </mat-form-field>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="ffxivCheckbox">
                         <label class="form-check-label ffxiv-checkbox-label" for="ffxivCheckbox">
@@ -36,7 +52,8 @@
                         </label>
                     </div>
                     <div>
-                        <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary w-100">Register</button>
+                        <button [disabled]="!registerForm.valid" type="submit"
+                            class="btn btn-primary w-100">Register</button>
                     </div>
                 </form>
             </div>
