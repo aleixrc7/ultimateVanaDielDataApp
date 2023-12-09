@@ -1,1 +1,9 @@
-<registry></registry>
+<div> 
+    <div *ngIf="!userLogued; else showNgTemplateContent"> 
+        <authorization></authorization>
+    </div>
+ </div>
+  
+ <ng-template #showNgTemplateContent>
+    <h1 style="color: tomato;">EEEEEEEEH</h1>
+ </ng-template>

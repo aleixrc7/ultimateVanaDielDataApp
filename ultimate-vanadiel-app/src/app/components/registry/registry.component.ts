@@ -10,6 +10,7 @@ export class RegistryComponent implements OnInit {
 
   public registerForm: FormGroup
 
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
